@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsfonts}
+
+\title{Tarea 3}
+\author{Eduardo Ulises Yaveh Álvarez Marmolejo}
+\date{August 2025}
+
+\begin{document}
+
+\maketitle
+\section{Problema 1}
+Sea $y_{t}=\varepsilon_{t}, \operatorname{con} E\left(\varepsilon_{t}\right)=0, E\left(\varepsilon_{t}^{2}\right)=\sigma^{2}>0$ y $E\left(\varepsilon_{t} \varepsilon_{s}\right)=0$ para $t \neq s$. Considera ahora el proceso:
+$$
+\varepsilon_{t}^{2}=c+\rho \varepsilon_{t-1}^{2}+u_{t}
+$$
+donde $0<\rho<1$ y $u_{t} \sim W N(0,1)$. Muestra que este proceso es estacionario. \\
+Proof:
+\begin{enumerate}
+    \item Para que sea estacionario: Media constante: $\mathbb{E}\left(y_{t}\right)=\mu$
+    \item Autocovarianza independiente del tiempo
+    \item Covarianza no depende del hempo.
+\end{enumerate}
+\[
+ \mathbb{E}(\varepsilon_t^2)=  \mathbb{E}(c+ \rho \varepsilon^2_{t-1}+u_t)
+\]
+\[
+= \mathbb{E}(c)+ \rho  \mathbb{E}(\varepsilon^2_{t-1})+ \mathbb{E}(u_t)
+\]
+\[
+= c+\rho \mathbb{E}(\varepsilon^2_{t-1})+0
+\]
+\[
+ \mathbb{E}(\varepsilon_t^2)=\mathbb{E}(\varepsilon_{t-1}^2)=\mu
+\]
+\[
+\rightarrow \mu=c+p \mu \rightarrow \mu-\mu p=c \rightarrow \mu(1-p)=c \rightarrow \mu=\frac{c}{1-p}
+\]
+
+Consideremos: $y_{t}=\varepsilon_{t}^{2}-\mu$\\
+\[
+\rightarrow y_{t}+\mu=c+\rho\left(y_{t-1}+\mu\right)+u_{t}
+\]
+\[
+y_{t}=c+\rho y_{t-1}+\rho \mu+u_{t}-\mu 
+\]
+como $c=\mu(1-p)$
+\[
+y_{t}=\mu(1-\rho)+\rho y_{t_{+}}+\rho \mu+u_{t}-\mu_{t}
+\]
+\[
+y_{t}=\rho y_{t-1}+u_{t}
+\]
+Obtemendo un AR:\\
+Y Por construccion: $\mathbb{E}\left(y_{t}\right)=0, \rho<1$ \& $u_{t}$ es Ruido blanco
+\[
+\gamma_{k}=cov\left(y_{t}, y_{t-1}\right)=\rho^{k} \gamma_{0}
+\]
+
+Donde:
+\[
+\gamma_{0}=\operatorname{var}\left(y_{t}\right)=\frac{\sigma_{u}^{2}}{1-\rho^{2}}=\frac{1}{1-\rho^{2}}
+\]
+Como $\varepsilon_{t}^{2}=y_{t}+\mu$
+$\operatorname{Cov}\left(\varepsilon_{t}^{2}, \varepsilon_{t-k}^{2}\right)=\operatorname{Cov}\left(y_{t}+y_{t-k}\right)=\gamma_{k}$
+$$
+\operatorname{Cov}\left(\varepsilon_{t}^{2}, \varepsilon_{t-k}^{2}\right)=\operatorname{Cov}\left(y_{t}+y_{t-k}\right)=\gamma_{k}
+$$
+
+\section{Problema 2}
+Sea $\varepsilon_{t} \sim \operatorname{iidN}\left(0, \sigma^{2}\right)$, y :
+$$
+Y_{t}=\delta t+\varepsilon_{t}
+$$
+
+Muestra que este proceso no es estacionario:\\
+Recuperando que tiene que tener media constante independiente del tiempo:\\
+\[
+E(Y_t)=E(\delta t+\varepsilon_t)
+\]
+\[
+E(Y_t)=\delta t+E(\varepsilon_t)
+\]
+\[
+E(Y_t)=\delta t +0 
+\]
+\[
+E(Y_t)=\delta t 
+\]
+Dado que depende de $t$, no es estacionario
+\section{Problema 3}
+Argumenta que una variable aleatoria $Y_{t} \sim$ iid Cauchy es estrictamente estacionaria, pero no estacionaria en covarianza.\\
+
+Por la naturaleza de la Cauchy, es estrictamente estacionaria debido a que la distribución conjunto por ser iid. Sin embargo, la media y la varianza no estan definidas, por la misma naturaleza de la Cauchy
+
+\section{Problema 4}
+Supongamos que la media $\mu^{(i)}$ de la i-ésima realización de $Y_{t}^{(i)},\left\{y_{t}^{(i)}\right\}_{t=-\infty}^{\infty}$, proviene de una distribución normal con media 0 y varianza $\lambda^{2}$. Además:
+$$
+Y_{t}^{(i)}=\mu^{(i)}+\varepsilon_{t} ; \quad \varepsilon_{t} \sim \operatornam{iid} N\left(0, \sigma^{2}\right)
+$$
+
+Muestra que el proceso que sigue $Y_{t}^{(i)}$ es estacionario, pero no ergódico.
+\begin{itemize}
+    \item Por la misma definición $Y_t^{(i)}$ iid$N( 0,\sigma^2)$ y  $u_t$ iiD $N(0,\lambda^2)$, por lo que es estacionario
+    \item La parte ergotica es que sea convergente a $E(Y_t^{(i)})$ entonces: \\
+    \[
+    \lim_{T\rightarrow \infty} \frac{1}{T}\sum^T_{t=1} Y_t^{(i)}=E( Y_t^{(i)})=0
+    \]
+    \[
+    =\frac{1}{T}\sum^T_{t=1}(\mu^{(i)}+\varepsilon_t)=\mu^{(i}+ \frac{1}{T}\sum^T_{t=1}\varepsilon_t
+    \]
+    Como $ \varepsilon_t$ \~ iid $N(0,\sigma^2)$
+    \[
+    =\frac{1}{T}\sum^T_{t=1}\varepsilon_t=0
+    \]
+    \[
+    =\frac{1}{T}\sum^T_{t=1}Y_t^{(i)} \rightarrow \mu^{(i)}
+    \]
+    Convergiendo a una variable aleatoria en lugar de 0
+\end{itemize}
+
+\end{document}
